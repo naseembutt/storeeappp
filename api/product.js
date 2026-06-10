@@ -1,14 +1,15 @@
 import express from "express";
 import serverless from "serverless-http";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
-import Product from "../model/product.model.js";
-
-dotenv.config();
+import Product from "./backend/model/product.model.js";
 
 const app = express();
 app.use(express.json());
 
+// MongoDB connect
+mongoose.connect(process.env.MONGO_URI);
+
+// GET - سارے products لینے کے لیے
 app.get("/api/products", async (req, res) => {
   try {
     const products = await Product.find({});
@@ -18,6 +19,7 @@ app.get("/api/products", async (req, res) => {
   }
 });
 
+// POST - نیا product add کرنے کے لیے
 app.post("/api/products", async (req, res) => {
   try {
     const product = new Product(req.body);
@@ -27,7 +29,5 @@ app.post("/api/products", async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 });
-
-mongoose.connect(process.env.MONGO_URI);
 
 export default serverless(app);
