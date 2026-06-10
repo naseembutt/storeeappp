@@ -1,7 +1,6 @@
 import { create } from "zustand";
 
-const API_URL =
-  "https://storeeappp-qq9hp218u-naseembutts-projects.vercel.app/api/products";
+const API_URL = "/api/products";
 
 export const useProductStore = create((set) => ({
   products: [],
