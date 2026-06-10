@@ -4,14 +4,14 @@ const serverless = require("serverless-http");
 
 const app = express();
 
-app.use(cors({ origin: "*" }));
+app.use(cors());
 app.use(express.json());
 
-app.get("/products", (req, res) => {
+app.get("/api/products", (req, res) => {
   res.json({ success: true, data: [] });
 });
 
-app.post("/products", (req, res) => {
+app.post("/api/products", (req, res) => {
   res.status(201).json({
     success: true,
     data: req.body,
