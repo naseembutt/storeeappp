@@ -8,7 +8,10 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/api/products", (req, res) => {
-  res.json({ success: true, data: [] });
+  res.json({
+    success: true,
+    data: [],
+  });
 });
 
 app.post("/api/products", (req, res) => {
