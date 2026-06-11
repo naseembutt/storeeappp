@@ -1,6 +1,6 @@
-const express = require("express");
-const cors = require("cors");
-const serverless = require("serverless-http");
+import express from "express";
+import cors from "cors";
+import serverless from "serverless-http";
 
 const app = express();
 
@@ -18,4 +18,4 @@ app.post("/api/products", (req, res) => {
   });
 });
 
-module.exports = serverless(app);
+export default serverless(app);
